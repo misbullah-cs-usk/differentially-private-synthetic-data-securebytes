@@ -105,13 +105,13 @@ Metrics:
 ## Repository Structure
 ```
 differentially-private-sythetic-data-securebytes/
+│── dpsgd_mlp_adult.py
+│── dpsyn_style_adult.py
 │── rmckenna_dp_synth_adult.py
-│── dpsyn_adult.py
-│── compare_hw1_hw2_hw3_all.py
-│── adult.csv
-│── hw3_outputs/
-│── hw3_dpsyn_outputs/
-│── final_all_outputs/
+│── adult.data
+│── run_dpsgd.sh
+│── run_dpsyn_style.sh
+│── run_rmckenna_style.sh
 │── README.md
 ```
 
