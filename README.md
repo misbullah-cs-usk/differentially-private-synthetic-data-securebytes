@@ -105,7 +105,7 @@ Metrics:
 Repository Structure
 ```
 differentially-private-sythetic-data-securebytes/
-│── dp_synth_adult.py
+│── rmckenna_dp_synth_adult.py
 │── dpsyn_adult.py
 │── compare_hw1_hw2_hw3_all.py
 │── adult.csv
