@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HW3: DPSyn-style Differentially Private Synthetic Data on Adult
+Midterm: DPSyn-style Differentially Private Synthetic Data on Adult
 
 This is an Adult-specific implementation inspired by the DPSyn pipeline:
 1) discretize Adult into a fully categorical/discrete table

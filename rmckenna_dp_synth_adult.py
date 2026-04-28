@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HW3: Differentially Private Synthetic Data on Adult
+Midterm: Differentially Private Synthetic Data on Adult
 Adapted from the rmckenna / Private-PGM style workflow:
 
 1) preprocess Adult into a fully discrete tabular dataset
