@@ -102,7 +102,7 @@ Metrics:
 * Recall
 * AUC
 
-Repository Structure
+## Repository Structure
 ```
 differentially-private-sythetic-data-securebytes/
 │── rmckenna_dp_synth_adult.py
@@ -116,8 +116,8 @@ differentially-private-sythetic-data-securebytes/
 ```
 
 
-References
-NIST Differentially Private Synthetic Data
-Private-PGM / McKenna et al.
-DPSyn papers
-Adult Dataset (UCI)
+## References
+- NIST Differentially Private Synthetic Data
+-  Private-PGM / McKenna et al.
+- DPSyn papers
+- Adult Dataset (UCI)
