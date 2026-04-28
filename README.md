@@ -115,12 +115,6 @@ differentially-private-sythetic-data-securebytes/
 │── README.md
 ```
 
-Main Findings
-
-
-Author
-
-Your Name / Group Name
 
 References
 NIST Differentially Private Synthetic Data
