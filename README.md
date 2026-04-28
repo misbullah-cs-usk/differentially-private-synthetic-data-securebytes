@@ -117,7 +117,7 @@ differentially-private-sythetic-data-securebytes/
 
 
 ## References
-- NIST Differentially Private Synthetic Data
--  Private-PGM / McKenna et al.
-- DPSyn papers
-- Adult Dataset (UCI)
+- NIST Differentially Private Synthetic Data (<a href="https://www.nist.gov/blogs/cybersecurity-insights/differentially-private-synthetic-data" target="_blank">Link</a>)
+- Team Ryan McKenna (<a hred="https://www.nist.gov/ctl/pscr/team-rmckenna" target="_blank">Link</a> / <a href="https://github.com/usnistgov/PrivacyEngCollabSpace/tree/master/tools/de-identification/Differential-Privacy-Synthetic-Data-Challenge-Algorithms/rmckenna" target="_blank">Code</a>)
+- Team DPSyn (<a href="https://www.nist.gov/ctl/pscr/team-dpsyn" target="_blank">Link</a> / <a href="https://github.com/usnistgov/PrivacyEngCollabSpace/tree/master/tools/de-identification/Differential-Privacy-Synthetic-Data-Challenge-Algorithms/DPSyn" target="_blank">Code</a>)
+- Adult Dataset (UCI) (<a href="https://archive.ics.uci.edu/dataset/2/adult" target="_blank">Link</a>)
