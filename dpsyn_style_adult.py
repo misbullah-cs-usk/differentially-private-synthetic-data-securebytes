@@ -42,7 +42,14 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.svm import SVC
 
-
+# This block defines the column names and feature groups used throughout the
+# experiment. The Adult dataset contains both numerical and categorical columns.
+# Numerical columns are later discretized into bins, while categorical columns
+# are encoded into integer IDs. The income column is used as the target/sensitive
+# attribute for downstream classification and utility evaluation.
+# =========================================================
+# Adult dataset schema and experiment constants
+# =========================================================
 ADULT_COLUMNS = [
     "age",
     "workclass",
@@ -83,6 +90,14 @@ CATEGORICAL_COLS = [
 
 TARGET_COL = "income"
 
+# This dataclass stores all information learned during preprocessing. It keeps
+# the numeric bin edges, categorical encoding maps, inverse maps for converting
+# synthetic data back to readable form, interval labels, feature names, and
+# domain sizes. Keeping these artifacts ensures that real train, real test, and
+# synthetic data use the same representation.
+# =========================================================
+# Preprocessing metadata container
+# =========================================================
 
 @dataclass
 class PreprocessArtifacts:
@@ -93,7 +108,11 @@ class PreprocessArtifacts:
     feature_cols: List[str]
     domain_sizes: Dict[str, int]
 
-
+# This section loads the Adult dataset, cleans missing values, standardizes
+# labels, and converts the mixed-type table into a fully discrete representation.
+# Differentially private marginal-based synthesis requires every attribute to
+# have a finite domain, so numerical columns are converted into bins and
+# categorical columns are converted into integer codes.
 # =========================================================
 # Loading and preprocessing
 # =========================================================
@@ -308,7 +327,11 @@ def inverse_transform_synthetic(
 
     return out
 
-
+# This section converts the requested privacy budget, represented by epsilon and
+# delta, into the Gaussian noise scale used for marginal measurements. Because
+# many marginals are measured, the code uses a conservative composition strategy:
+# more measured queries require more noise to satisfy the same overall privacy
+# budget.
 # =========================================================
 # DP accounting
 # =========================================================
@@ -358,9 +381,13 @@ def gaussian_sigma_for_k_queries(epsilon: float, delta: float, k_queries: int) -
     sigma = math.sqrt(k_queries / (2.0 * rho_total))
     return sigma
 
-
+# This section chooses which statistics of the real data will be measured with
+# differential privacy. The workload includes all 1-way marginals, important
+# 2-way marginals selected by mutual information, target-related 3-way marginals,
+# and some random marginals for broader coverage. These noisy marginals become
+# the statistical blueprint for generating synthetic data.
 # =========================================================
-# Marginal selection
+# Marginal workload selection
 # =========================================================
 
 def select_workload_dpsyn(
@@ -436,9 +463,12 @@ def select_workload_dpsyn(
             seen.add(proj)
     return deduped
 
-
+# This section computes contingency tables for selected marginals and adds
+# calibrated Gaussian noise to them. For example, a marginal over education and
+# income counts how many records fall into each education-income combination.
+# Noise is added so that the contribution of any single person is protected.
 # =========================================================
-# Marginal utilities
+# Marginal counting and noisy measurement
 # =========================================================
 
 def marginal_counts(df: pd.DataFrame, attrs: Tuple[str, ...], domain_sizes: Dict[str, int]) -> np.ndarray:
@@ -889,9 +919,13 @@ def evaluate_downstream_models(
 
     return pd.DataFrame(rows)
 
-
+# This section runs the full DPSyn-style experiment. It loads the Adult dataset,
+# creates train/test splits, preprocesses the data, selects marginals, generates
+# DP synthetic datasets for several epsilon values, evaluates ML utility, and
+# saves all output CSV files. This is the entry point executed when the script is
+# run from the command line.
 # =========================================================
-# Main
+# Main experiment pipeline
 # =========================================================
 
 def save_json(obj: dict, path: Path) -> None:
